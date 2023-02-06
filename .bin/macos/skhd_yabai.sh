@@ -10,6 +10,7 @@ if which spacebar >/dev/null; then
       spacebar -m config display_separator_icon_color 0xffffffff &
       spacebar -m config background_color 0x88282a36 &
       spacebar -m config foreground_color 0x88eff0eb &
+      spacebar -m config space_icon_strip DEFAULT &
       ;;
     highlight_active) # white
       spacebar -m config space_icon_color             0xff282a36 &
@@ -51,14 +52,14 @@ if which spacebar >/dev/null; then
       spacebar -m config background_color 0xfff3f99d             &
       spacebar -m config foreground_color 0xff282a36             &
       ;;
-    highlight_resize) # cyan
-      spacebar -m config space_icon_color             0xff282a36 &
-      spacebar -m config space_icon_color_secondary   0xff282a36 &
-      spacebar -m config space_icon_color_tertiary    0xff282a36 &
-      spacebar -m config display_separator_icon_color 0xff282a36 &
-      spacebar -m config background_color 0xff9aedfe             &
-      spacebar -m config foreground_color 0xff282a36             &
-      ;;
+    #highlight_resize) # cyan
+      #spacebar -m config space_icon_color             0xff282a36 &
+      #spacebar -m config space_icon_color_secondary   0xff282a36 &
+      #spacebar -m config space_icon_color_tertiary    0xff282a36 &
+      #spacebar -m config display_separator_icon_color 0xff282a36 &
+      #spacebar -m config background_color 0xff9aedfe             &
+      #spacebar -m config foreground_color 0xff282a36             &
+      #;;
     highlight_toggle) # purple
       spacebar -m config space_icon_color             0xff282a36 &
       spacebar -m config space_icon_color_secondary   0xff282a36 &
@@ -84,6 +85,8 @@ if which spacebar >/dev/null; then
     highlight_display)
       spacebar -m config space_icon_strip DISPLAY
       ;;
+    highlight_resize)
+      spacebar -m config space_icon_strip RESIZE 
   esac
 else
   case "$1" in
