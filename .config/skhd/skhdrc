@@ -166,6 +166,8 @@
 :: window  @ : ~/.bin/macos/skhd_yabai.sh highlight_window
 :: display @ : ~/.bin/macos/skhd_yabai.sh highlight_display
 :: resize  @ : ~/.bin/macos/skhd_yabai.sh highlight_resize
+:: grid    @ : ~/.bin/macos/skhd_yabai.sh highlight_grid
+ 
 #
 # Caps Lock sends ctrl - 0x31(space key), which is used to activate shortcuts.
 # Afterwards, tapping it again or Esc key anywhere will get us back to default shortcuts.
@@ -184,18 +186,19 @@
 #launch_app, launch_finder, launch_script, launch_restart < escape ; default
 
 default                 < ctrl - 0x31 ; window 
-window, display, resize < 0x31        ; default
-window, display, resize < escape      ; default
-display, resize         < w           ; window
-window, display         < s           ; resize
-window, resize          < d           ; display
+window, display, resize, grid < 0x31        ; default
+window, display, resize, grid < escape      ; default
+display, resize, grid         < w           ; window
+window, display, grid         < ctrl - r    ; resize
+window, resize, grid          < ctrl - d    ; display
+window, display, resize         < ctrl - g    ; grid
 #window                  < R           ; launch_restart 
 
 ### default mode 
 # forcus window
 default, window, resize, display < alt - tab : yabai -m window --focus next || yabai -m window --focus first
 default, window, resize, display < alt + shift - tab : yabai -m window --focus prev || yabai -m window --focus last 
-
+# 
 ### window, resize, display mode
 window, resize, display < tab           : yabai -m window --focus next || yabai -m window --focus first
 window, resize, display < shift - tab   : yabai -m window --focus prev || yabai -m window --focus last
@@ -222,6 +225,7 @@ window < shift - x    : yabai -m space --mirror x-axis
 window < shift - y    : yabai -m space --mirror y-axis
 window < shift - 0x2F : yabai -m space --rotate 270   # >
 window < shift - 0x2B : yabai -m space --rotate 90    # <
+window < shift - s    : yabai -m window --toggle split
 # move windows
 window < ctrl- h    : yabai -m window --warp west
 window < ctrl- j    : yabai -m window --warp south
@@ -243,80 +247,33 @@ resize < h : yabai -m window --resize left:-20:0
 resize < j : yabai -m window --resize bottom:0:20
 resize < k : yabai -m window --resize top:0:-20
 resize < l : yabai -m window --resize right:20:0
+resize < i : yabai -m window --resize left:-20:0; \
+             yabai -m window --resize bottom:0:20; \
+             yabai -m window --resize top:0:-20; \
+             yabai -m window --resize right:20:0
 # decrease window size
 resize < shift - h : yabai -m window --resize left:20:0
 resize < shift - j : yabai -m window --resize bottom:0:-20
 resize < shift - k : yabai -m window --resize top:0:20
 resize < shift - l : yabai -m window --resize right:-20:0
+resize < d         : yabai -m window --resize left:20:0; \
+                     yabai -m window --resize bottom:0:-20; \
+                     yabai -m window --resize top:0:20; \
+                     yabai -m window --resize right:-20:0 
 
+## grid windows - make non-managed/floating window occupy a certain position
+grid < h       : yabai -m window --grid 1:2:0:0:1:1
+grid < j       : yabai -m window --grid 2:1:0:1:1:1
+grid < k       : yabai -m window --grid 2:1:0:0:1:1
+grid < l       : yabai -m window --grid 1:2:1:0:1:1
+grid < m       : yabai -m window --grid 1:1:0:0:1:1
+grid < alt - h : yabai -m window --grid 2:2:0:0:1:1
+grid < alt - j : yabai -m window --grid 2:2:0:1:1:1
+grid < alt - k : yabai -m window --grid 2:2:1:0:1:1
+grid < alt - l : yabai -m window --grid 2:2:1:1:1:1
+# toggle window to make it float and center - alias for F19-rm
+grid < alt - m : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2; skhd -k 'escape'
 
-## Caps Lock and then KEY takes us to respective action mode.
-#active < f ; focus             # green
-#active < g ; grid              # orange
-#active < s ; swap              # red
-#active < m ; move              # yellow
-#active < r ; resize            # cyan
-#active < t ; toggle            # purple
-#active < l ; launch            # blue
-#
-##focus
-#focus < w  ; focus_window
-#focus < s  ; focus_space
-#focus < d  ; focus_display
-#focus_window < s ; focus_space
-#focus_window < d ; focus_display
-#focus_space  < w ; focus_window 
-#focus_space  < d ; focus_display 
-#focus_display < w ; focus_window 
-#focus_display < s ; focus_space 
-#
-#
-#
-#
-#
-#swap < w   ; swap_window
-#swap < s   ; swap_space
-#swap < d   ; swap_display
-#move < w   ; move_window
-#move < s   ; move_space
-#move < d   ; move_display
-#toggle < w ; toggle_window
-#toggle < s ; toggle_space
-#toggle < d ; toggle_display
-#grid < w   ; grid
-#grid < s   ; default
-#grid < d   ; default
-#resize < w ; resize
-#resize < s ; default
-#resize < d ; default
-#launch < a ; launch_app
-#launch < f ; launch_finder
-#launch < s ; launch_script
-#launch < r ; launch_restart
-#launch < w ; default
-#launch < d ; default
-#
-## focus windows
-##focus_window < h    : yabai -m window --focus west; skhd -k 'escape'
-##focus_window < j    : yabai -m window --focus south; skhd -k 'escape'
-##focus_window < k    : yabai -m window --focus north; skhd -k 'escape'
-##focus_window < l    : yabai -m window --focus east; skhd -k 'escape'
-##focus_window < 0x2A : yabai -m window --focus recent; skhd -k 'escape'
-##focus_window < 0x21 : yabai -m window --focus prev; skhd -k 'escape'
-##focus_window < 0x1E : yabai -m window --focus next; skhd -k 'escape'
-##focus_window < 0x2B : yabai -m window --focus prev; skhd -k 'escape'
-##focus_window < 0x2F : yabai -m window --focus next; skhd -k 'escape'
-##focus_window < m    : yabai -m window --focus largest; skhd -k 'escape'
-#
-#focus_window < h    : yabai -m window --focus west
-#focus_window < j    : yabai -m window --focus south
-#focus_window < k    : yabai -m window --focus north
-#focus_window < l    : yabai -m window --focus east
-#focus_window < r    : yabai -m window --focus recent
-#focus_window < p    : yabai -m window --focus prev
-#focus_window < n    : yabai -m window --focus next
-#focus_window < m    : yabai -m window --focus largest
-#
 ## focus spaces
 #focus_space < h    : yabai -m space --focus prev
 #focus_space < j    : yabai -m space --focus next
@@ -354,27 +311,6 @@ resize < shift - l : yabai -m window --resize right:-20:0
 #focus_display < 8    : yabai -m display --focus 8
 #focus_display < 9    : yabai -m display --focus 9
 #focus_display < 0    : yabai -m display --focus 10
-#
-## common functionality for swap/move
-##move_window, swap_window < x    : yabai -m space --mirror x-axis; skhd -k 'escape'
-##move_window, swap_window < y    : yabai -m space --mirror y-axis; skhd -k 'escape'
-##move_window, swap_window < 0x2B : yabai -m space --rotate 270; skhd -k 'escape'
-##move_window, swap_window < 0x2F : yabai -m space --rotate 90; skhd -k 'escape'
-#
-#move_window, swap_window < x    : yabai -m space --mirror x-axis
-#move_window, swap_window < y    : yabai -m space --mirror y-axis
-#move_window, swap_window < 0x2F : yabai -m space --rotate 270   # >
-#move_window, swap_window < 0x2B : yabai -m space --rotate 90    # <
-#
-## move windows
-#move_window < h    : yabai -m window --warp west
-#move_window < j    : yabai -m window --warp south
-#move_window < k    : yabai -m window --warp north
-#move_window < l    : yabai -m window --warp east
-#move_window < r    : yabai -m window --warp recent
-#move_window < p    : yabai -m window --warp prev
-#move_window < n    : yabai -m window --warp next
-#move_window < m    : yabai -m window --warp largest
 #
 ## move windows to spaces
 #move_window < shift - h    : yabai -m window --space prev; yabai -m space --focus prev

@@ -28,14 +28,14 @@ if which spacebar >/dev/null; then
       spacebar -m config background_color 0xff5af78e             &
       spacebar -m config foreground_color 0xff282a36             &
       ;;
-    highlight_grid) # orange/magenta
-      spacebar -m config space_icon_color             0xff282a36 &
-      spacebar -m config space_icon_color_secondary   0xff282a36 &
-      spacebar -m config space_icon_color_tertiary    0xff282a36 &
-      spacebar -m config display_separator_icon_color 0xff282a36 &
-      spacebar -m config background_color 0xffff6ac1             &
-      spacebar -m config foreground_color 0xff282a36             &
-      ;;
+    #highlight_grid) # orange/magenta
+      #spacebar -m config space_icon_color             0xff282a36 &
+      #spacebar -m config space_icon_color_secondary   0xff282a36 &
+      #spacebar -m config space_icon_color_tertiary    0xff282a36 &
+      #spacebar -m config display_separator_icon_color 0xff282a36 &
+      #spacebar -m config background_color 0xffff6ac1             &
+      #spacebar -m config foreground_color 0xff282a36             &
+      #;;
     highlight_swap) # red
       spacebar -m config space_icon_color             0xffeff0eb &
       spacebar -m config space_icon_color_secondary   0xffeff0eb &
@@ -87,6 +87,10 @@ if which spacebar >/dev/null; then
       ;;
     highlight_resize)
       spacebar -m config space_icon_strip RESIZE 
+      ;;
+    highlight_grid)
+      spacebar -m config space_icon_strip GRID 
+      ;;
   esac
 else
   case "$1" in
