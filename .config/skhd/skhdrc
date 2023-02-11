@@ -133,36 +133,6 @@
 # \ targets recent, [ targets previous and ] targets next window for all commands.
 
 :: default   : ~/.bin/macos/skhd_yabai.sh highlight_default
-#:: active  @ : ~/.bin/macos/skhd_yabai.sh highlight_active  # listening for hotkeys - white color
-#
-#:: focus  @ : ~/.bin/macos/skhd_yabai.sh highlight_focus    # focus window, spaces or displays - green color
-#:: swap   @ : ~/.bin/macos/skhd_yabai.sh highlight_swap     # swap windows, spaces or displays - red color
-#:: move   @ : ~/.bin/macos/skhd_yabai.sh highlight_move     # move (warp) windows, spaces or displays - yellow color
-#:: grid   @ : ~/.bin/macos/skhd_yabai.sh highlight_grid     # layout windows in grid - orange color
-#:: resize @ : ~/.bin/macos/skhd_yabai.sh highlight_resize   # resize windows - cyan color
-#:: toggle @ : ~/.bin/macos/skhd_yabai.sh highlight_toggle   # toggle window, space or display attributes - purple color
-#:: launch @ : ~/.bin/macos/skhd_yabai.sh highlight_launch   # launch applications or scripts - blue color
-# :: warpnf @ : ~/.bin/macos/skhd_yabai.sh highlight_warpnf   # Same, but don't follow focus
-
-
-
-#:: focus_window    @ : ~/.bin/macos/skhd_yabai.sh highlight_window
-#:: focus_space     @ : ~/.bin/macos/skhd_yabai.sh highlight_space
-#:: focus_display   @ : ~/.bin/macos/skhd_yabai.sh highlight_display
-#:: swap_window     @ : ~/.bin/macos/skhd_yabai.sh highlight_window
-#:: swap_space      @ : ~/.bin/macos/skhd_yabai.sh highlight_space
-#:: swap_display    @ : ~/.bin/macos/skhd_yabai.sh highlight_display
-#:: move_window     @ : ~/.bin/macos/skhd_yabai.sh highlight_window
-#:: move_space      @ : ~/.bin/macos/skhd_yabai.sh highlight_space
-#:: move_display    @ : ~/.bin/macos/skhd_yabai.sh highlight_display
-#:: toggle_window   @ : ~/.bin/macos/skhd_yabai.sh highlight_window
-#:: toggle_space    @ : ~/.bin/macos/skhd_yabai.sh highlight_space
-#:: toggle_display  @ : ~/.bin/macos/skhd_yabai.sh highlight_display
-#:: launch_finder   @ : ~/.bin/macos/skhd_yabai.sh highlight_window
-#:: launch_script   @ : ~/.bin/macos/skhd_yabai.sh highlight_space
-:: launch_restart  @ : ~/.bin/macos/skhd_yabai.sh highlight_space
-#:: launch_app      @ : ~/.bin/macos/skhd_yabai.sh highlight_display
-
 :: window  @ : ~/.bin/macos/skhd_yabai.sh highlight_window
 :: display @ : ~/.bin/macos/skhd_yabai.sh highlight_display
 :: resize  @ : ~/.bin/macos/skhd_yabai.sh highlight_resize
@@ -170,20 +140,6 @@
 #
 # Caps Lock sends ctrl - 0x31(space key), which is used to activate shortcuts.
 # Afterwards, tapping it again or Esc key anywhere will get us back to default shortcuts.
-#default <  ctrl - 0x31 ; active
-#active, focus, grid, swap, move, resize, toggle, launch < 0x31 ; default
-#active, focus, grid, swap, move, resize, toggle, launch < escape ; default
-#focus_window, focus_space, focus_display < 0x31 ; default
-#focus_window, focus_space, focus_display < escape ; default
-#swap_window, swap_space, swap_display < 0x31 ; default
-#swap_window, swap_space, swap_display < escape ; default
-#move_window, move_space, move_display < 0x31 ; default
-#move_window, move_space, move_display < escape ; default
-#toggle_window, toggle_space, toggle_display < 0x31 ; default
-#toggle_window, toggle_space, toggle_display < escape ; default
-#launch_app, launch_finder, launch_script, launch_restart < 0x31 ; default
-#launch_app, launch_finder, launch_script, launch_restart < escape ; default
-
 default                 < ctrl - 0x31 ; window 
 window, display, resize, grid < 0x31        ; default
 window, display, resize, grid < escape      ; default
@@ -191,13 +147,12 @@ display, resize, grid         < w           ; window
 window, display, grid         < ctrl - r    ; resize
 window, resize, grid          < ctrl - d    ; display
 window, display, resize       < ctrl - g    ; grid
-#window                  < R           ; launch_restart 
 
 ### default mode 
 # forcus window
 default < alt - tab : yabai -m window --focus next || yabai -m window --focus first
 default < alt + shift - tab : yabai -m window --focus prev || yabai -m window --focus last 
-# 
+ 
 ### window, resize, display mode
 window, resize, display < tab           : yabai -m window --focus next || yabai -m window --focus first
 window, resize, display < shift - tab   : yabai -m window --focus prev || yabai -m window --focus last
@@ -292,7 +247,7 @@ window < alt - 7    : yabai -m space --focus 7
 window < alt - 8    : yabai -m space --focus 8
 window < alt - 9    : yabai -m space --focus 9
 window < alt - 0    : yabai -m space --focus 10
-#
+
 ## focus display
 window < cmd - h    : yabai -m display --focus prev || yabai -m display --focus last
 window < cmd - j    : yabai -m display --focus prev || yabai -m display --focus last
@@ -310,7 +265,7 @@ window < cmd - 7    : yabai -m display --focus 7
 window < cmd - 8    : yabai -m display --focus 8
 window < cmd - 9    : yabai -m display --focus 9
 window < cmd - 0    : yabai -m display --focus 10
-#
+
 ## move windows to spaces
 #move_window < shift - h    : yabai -m window --space prev; yabai -m space --focus prev
 #move_window < shift - j    : yabai -m window --space next; yabai -m space --focus next
@@ -339,7 +294,7 @@ window < cmd - 0    : yabai -m display --focus 10
 #move_window < shift - 8    : yabai -m window --space 8; yabai -m space --focus 8
 #move_window < shift - 9    : yabai -m window --space 9; yabai -m space --focus 9
 #move_window < shift - 0    : yabai -m window --space 10; yabai -m space --focus 10
-#
+
 ## move windows to display
 #move_window < cmd - h    : yabai -m window --display prev; yabai -m display --focus prev
 #move_window < cmd - j    : yabai -m window --display next; yabai -m display --focus next
@@ -358,7 +313,7 @@ window < cmd - 0    : yabai -m display --focus 10
 #move_window < cmd - 8    : yabai -m window --display 8; yabai -m display --focus 8
 #move_window < cmd - 9    : yabai -m window --display 9; yabai -m display --focus 9
 #move_window < cmd - 0    : yabai -m window --display 10; yabai -m display --focus 10
-#
+
 ## move spaces
 #move_space < h    : yabai -m space --move prev
 #move_space < j    : yabai -m space --move next
@@ -377,7 +332,7 @@ window < cmd - 0    : yabai -m display --focus 10
 #move_space < 8    : yabai -m space --move 8
 #move_space < 9    : yabai -m space --move 9
 #move_space < 0    : yabai -m space --move 10
-#
+
 ## move spaces to display
 #move_space < shift - h    : yabai -m space --display prev; yabai -m display --focus prev
 #move_space < shift - j    : yabai -m space --display next; yabai -m display --focus next
@@ -416,7 +371,7 @@ window < cmd - 0    : yabai -m display --focus 10
 #toggle_space  < d       : yabai -m space --toggle show-desktop; skhd -k 'escape'
 ## toggle window to make it float and center
 #toggle_window < c       : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2; skhd -k 'escape'
-#
+
 ## launch new terminal window
 #launch, launch_app, launch_script < t      : skhd -k 'escape'; ~/.bin/macos/new-terminal.applescript
 #launch < n      : skhd -k 'escape'; ~/.bin/macos/new-terminal.applescript nick
