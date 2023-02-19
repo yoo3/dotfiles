@@ -143,7 +143,7 @@
 default                 < ctrl - 0x31 ; window 
 window, display, resize, grid < 0x31        ; default
 window, display, resize, grid < escape      ; default
-window, display, resize, grid < w           ; window
+window, display, resize, grid < ctrl - w    ; window
 window, display, resize, grid < ctrl - r    ; resize
 window, display, resize, grid < ctrl - d    ; display
 window, display, resize, grid < ctrl - g    ; grid
@@ -204,7 +204,7 @@ window < ctrl - m       : skhd_timeout.sh reset; yabai -m window --toggle float 
 resize < h : skhd_timeout.sh reset; yabai -m window --resize left:-20:0
 resize < j : skhd_timeout.sh reset; yabai -m window --resize bottom:0:20
 resize < k : skhd_timeout.sh reset; yabai -m window --resize top:0:-20
-resize < l : skhd_timeout.sh reset; yabai -m window --resize right:20:0
+resize < l : skhd_timeout.sh reset; yabai -m window --resize right:20:0 
 resize < i : skhd_timeout.sh reset; \
               yabai -m window --resize left:-20:0 --resize bottom:0:20 --resize top:0:-20 --resize right:20:0
 # decrease window size

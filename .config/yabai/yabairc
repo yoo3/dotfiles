@@ -87,5 +87,23 @@ yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize         
 yabai -m config window_border                on
 
+# Float Windows
+yabai -m rule --add app=Finder manage=off
+yabai -m rule --add app=1Password manage=off
+yabai -m rule --add app=Calculator manage=off
+#yabai -m rule --add app="System Settings" manage=off
+yabai -m rule --add app=Karabiner-Elements manage=off
+yabai -m rule --add app=システム設定 manage=off
+yabai -m rule --add app=アクティビティモニタ manage=off
+yabai -m rule --add app=計算機 manage=off
+yabai -m rule --add app=Raycast manage=off
+
+
+
+
+
+
+
+
 
 echo "yabai configuration loaded..
