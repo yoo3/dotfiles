@@ -95,6 +95,11 @@ sketchybar --add item clock right                              \
 # The below command is only needed at the end of the initial configuration and
 # should never be run in an item script.
 
+# M O D A L  I N D I C A T O R 
+sketchybar -m --add item modal center
+sketchybar -m --set modal icon=[N]
+sketchybar -m --set modal icon_color =0xFF83A1F1
+
 sketchybar --update
 
 echo "sketchybar configuration loaded.."

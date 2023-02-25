@@ -97,6 +97,8 @@ yabai -m rule --add app=システム設定 manage=off
 yabai -m rule --add app=アクティビティモニタ manage=off
 yabai -m rule --add app=計算機 manage=off
 yabai -m rule --add app=Raycast manage=off
+yabai -m rule --add app="BetterTouchTool" manage=off
+yabai -m rule --add app="Logi Options+" manage=off
 
 
 
