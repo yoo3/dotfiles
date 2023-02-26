@@ -132,11 +132,11 @@
 # hjkl keys targets windows/space/display like vim, while m targets largest windows and
 # \ targets recent, [ targets previous and ] targets next window for all commands.
 
-:: default   : skhd_yabai.sh highlight_default; skhd_timeout.sh kill
-:: window  @ : skhd_yabai.sh highlight_window;  skhd_timeout.sh 3 || skhd_timeout.sh reset
-:: display @ : skhd_yabai.sh highlight_display; skhd_timeout.sh reset
-:: resize  @ : skhd_yabai.sh highlight_resize;  skhd_timeout.sh reset
-:: grid    @ : skhd_yabai.sh highlight_grid; skhd_timeout.sh reset
+:: default   : skhd_indicator.sh default; skhd_timeout.sh kill
+:: window  @ : skhd_indicator.sh window;  skhd_timeout.sh 3 || skhd_timeout.sh reset
+:: display @ : skhd_indicator.sh display; skhd_timeout.sh reset
+:: resize  @ : skhd_indicator.sh resize;  skhd_timeout.sh reset
+:: grid    @ : skhd_indicator.sh grid; skhd_timeout.sh reset
 
 # Caps Lock sends ctrl - 0x31(space key), which is used to activate shortcuts.
 # Afterwards, tapping it again or Esc key anywhere will get us back to default shortcuts.
