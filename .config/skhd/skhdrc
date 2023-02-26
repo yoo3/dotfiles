@@ -132,11 +132,11 @@
 # hjkl keys targets windows/space/display like vim, while m targets largest windows and
 # \ targets recent, [ targets previous and ] targets next window for all commands.
 
-:: default   : skhd_yabai.sh highlight_default; ~/.bin/macos/skhd_timeout.sh kill
-:: window  @ : skhd_yabai.sh highlight_window;  skhd_timeout.sh 3 || ~/.bin/macos/skhd_timeout.sh reset
-:: display @ : skhd_yabai.sh highlight_display; ~/.bin/macos/skhd_timeout.sh reset
-:: resize  @ : skhd_yabai.sh highlight_resize;  ~/.bin/macos/skhd_timeout.sh reset
-:: grid    @ : skhd_yabai.sh highlight_grid; ~/.bin/macos/skhd_timeout.sh reset
+:: default   : skhd_yabai.sh highlight_default; skhd_timeout.sh kill
+:: window  @ : skhd_yabai.sh highlight_window;  skhd_timeout.sh 3 || skhd_timeout.sh reset
+:: display @ : skhd_yabai.sh highlight_display; skhd_timeout.sh reset
+:: resize  @ : skhd_yabai.sh highlight_resize;  skhd_timeout.sh reset
+:: grid    @ : skhd_yabai.sh highlight_grid; skhd_timeout.sh reset
 
 # Caps Lock sends ctrl - 0x31(space key), which is used to activate shortcuts.
 # Afterwards, tapping it again or Esc key anywhere will get us back to default shortcuts.
@@ -159,22 +159,22 @@ window, resize, display < shift - tab   : yabai -m window --focus prev || yabai 
 
 ### window mode
 # forcus window
-window < h             : skhd_timeout.sh reset; yabai -m window --focus west
-window < j             : skhd_timeout.sh reset; yabai -m window --focus south
-window < k             : skhd_timeout.sh reset; yabai -m window --focus north
-window < l             : skhd_timeout.sh reset; yabai -m window --focus east
-window < r             : skhd_timeout.sh reset; yabai -m window --focus recent
-window < n             : skhd_timeout.sh reset; yabai -m window --focus next || yabai -m window --focus first
-window < p             : skhd_timeout.sh reset; yabai -m window --focus prev || yabai -m window --focus last
-window < m             : skhd_timeout.sh reset; yabai -m window --focus mouse 
+window < h            : skhd_timeout.sh reset; yabai -m window --focus west
+window < j            : skhd_timeout.sh reset; yabai -m window --focus south
+window < k            : skhd_timeout.sh reset; yabai -m window --focus north
+window < l            : skhd_timeout.sh reset; yabai -m window --focus east
+window < r            : skhd_timeout.sh reset; yabai -m window --focus recent
+window < n            : skhd_timeout.sh reset; yabai -m window --focus next || yabai -m window --focus first
+window < p            : skhd_timeout.sh reset; yabai -m window --focus prev || yabai -m window --focus last
+window < m            : skhd_timeout.sh reset; yabai -m window --focus mouse 
 # swap window 
-window < shift - h            : skhd_timeout.sh reset; yabai -m window --swap west
-window < shift - j            : skhd_timeout.sh reset; yabai -m window --swap south
-window < shift - k            : skhd_timeout.sh reset; yabai -m window --swap north
-window < shift - l            : skhd_timeout.sh reset; yabai -m window --swap east
-window < shift - r            : skhd_timeout.sh reset; yabai -m window --swap recent
-window < shift - p            : skhd_timeout.sh reset; yabai -m window --swap prev
-window < shift - n            : skhd_timeout.sh reset; yabai -m window --swap next 
+window < shift - h    : skhd_timeout.sh reset; yabai -m window --swap west
+window < shift - j    : skhd_timeout.sh reset; yabai -m window --swap south
+window < shift - k    : skhd_timeout.sh reset; yabai -m window --swap north
+window < shift - l    : skhd_timeout.sh reset; yabai -m window --swap east
+window < shift - r    : skhd_timeout.sh reset; yabai -m window --swap recent
+window < shift - p    : skhd_timeout.sh reset; yabai -m window --swap prev
+window < shift - n    : skhd_timeout.sh reset; yabai -m window --swap next 
 window < shift - x    : skhd_timeout.sh reset; yabai -m space --mirror x-axis
 window < shift - y    : skhd_timeout.sh reset; yabai -m space --mirror y-axis
 window < shift - 0x2F : skhd_timeout.sh reset; yabai -m space --rotate 270   # >
