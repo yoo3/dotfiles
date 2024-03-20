@@ -1,0 +1,3 @@
+[submodule "pkgs/kickstart.nvim/.config/nvim"]
+	path = pkgs/kickstart.nvim/.config/nvim
+	url = git@github.com:yoo3/kickstart.nvim.git
